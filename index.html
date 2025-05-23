@@ -52,35 +52,51 @@
   <section class="max-w-6xl mx-auto px-4 py-12">
     <h2 class="text-3xl font-bold text-indigo-800 mb-8 text-center">Featured Books</h2>
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8" id="featuredBooksGrid">
-      <!-- Featured books will be rendered here by JavaScript -->
+      <!-- Hardcoded featured books -->
+      <div class="border p-4 rounded shadow text-center">
+        <img src="public/covers/bakemonogatari.jpeg" alt="Bakemonogatari" class="w-full h-48 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">Bakemonogatari</h3>
+        <p class="text-sm text-gray-500">by Nisio Isin</p>
+        <p class="text-indigo-700 font-bold mt-2">₹499</p>
+        <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
+      </div>
+      <div class="border p-4 rounded shadow text-center">
+        <img src="public/covers/classroomofelites.jpeg" alt="Classroom of the Elite" class="w-full h-48 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">Classroom of the Elite</h3>
+        <p class="text-sm text-gray-500">by Syougo Kinugasa</p>
+        <p class="text-indigo-700 font-bold mt-2">₹399</p>
+        <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
+      </div>
+      <div class="border p-4 rounded shadow text-center">
+        <img src="public/covers/itstartswithus.jpeg" alt="It Starts With Us" class="w-full h-48 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">It Starts With Us</h3>
+        <p class="text-sm text-gray-500">by Colleen Hoover</p>
+        <p class="text-indigo-700 font-bold mt-2">₹299</p>
+        <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
+      </div>
+      <div class="border p-4 rounded shadow text-center">
+        <img src="public/covers/nolongerhuman.jpeg" alt="No Longer Human" class="w-full h-48 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">No Longer Human</h3>
+        <p class="text-sm text-gray-500">by Osamu Dazai</p>
+        <p class="text-indigo-700 font-bold mt-2">₹349</p>
+        <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
+      </div>
+      <div class="border p-4 rounded shadow text-center">
+        <img src="public/covers/out.jpeg" alt="Out" class="w-full h-48 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">Out</h3>
+        <p class="text-sm text-gray-500">by Natsuo Kirino</p>
+        <p class="text-indigo-700 font-bold mt-2">₹399</p>
+        <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
+      </div>
+      <div class="border p-4 rounded shadow text-center">
+        <img src="public/covers/thewindupbird.png" alt="The Wind-Up Bird Chronicle" class="w-full h-48 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">The Wind-Up Bird Chronicle</h3>
+        <p class="text-sm text-gray-500">by Haruki Murakami</p>
+        <p class="text-indigo-700 font-bold mt-2">₹599</p>
+        <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
+      </div>
     </div>
   </section>
-  <script>
-    // Featured Books from data.json (random 6)
-    fetch('data.json')
-      .then(res => res.json())
-      .then(data => {
-        // Shuffle and pick 6 random books
-        const shuffled = data.sort(() => 0.5 - Math.random());
-        const featured = shuffled.slice(0, 6);
-        const grid = document.getElementById('featuredBooksGrid');
-        if (grid) {
-          grid.innerHTML = '';
-          featured.forEach(book => {
-            const card = document.createElement('div');
-            card.className = 'border p-4 rounded shadow text-center';
-            card.innerHTML = `
-              <img src="${book.image}" alt="${book.title}" class="w-full h-48 object-cover mb-4 rounded">
-              <h3 class="text-lg font-semibold">${book.title}</h3>
-              <p class="text-sm text-gray-500">by ${book.author}</p>
-              <p class="text-indigo-700 font-bold mt-2">₹${book.price}</p>
-              <a href="shop.html" class="mt-3 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">View</a>
-            `;
-            grid.appendChild(card);
-          });
-        }
-      });
-  </script>
 
   <!-- About Section -->
   <section id="about" class="bg-indigo-100 py-16 text-center px-4">
