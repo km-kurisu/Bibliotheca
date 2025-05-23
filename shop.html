@@ -39,10 +39,121 @@
   </section>
 
   <script>
-    async function fetchBooks() {
-      const res = await fetch('data.json');
-      return await res.json();
-    }
+    // Hardcoded book data (all books from data.json and previous entries)
+    const allBooks = [
+      {
+        title: "Bakemonogatari",
+        author: "Nisio Isin",
+        price: 499,
+        category: "fiction",
+        image: "covers/bakemonogatari.jpeg"
+      },
+      {
+        title: "Classroom of the Elite",
+        author: "Syougo Kinugasa",
+        price: 399,
+        category: "fiction",
+        image: "covers/classroomofelites.jpeg"
+      },
+      {
+        title: "It Starts With Us",
+        author: "Colleen Hoover",
+        price: 299,
+        category: "romance",
+        image: "covers/itstartswithus.jpeg"
+      },
+      {
+        title: "No Longer Human",
+        author: "Osamu Dazai",
+        price: 349,
+        category: "fiction",
+        image: "covers/nolongerhuman.jpeg"
+      },
+      {
+        title: "Out",
+        author: "Natsuo Kirino",
+        price: 399,
+        category: "fiction",
+        image: "covers/out.jpeg"
+      },
+      {
+        title: "The Wind-Up Bird Chronicle",
+        author: "Haruki Murakami",
+        price: 599,
+        category: "fiction",
+        image: "covers/thewindupbird.png"
+      },
+      {
+        title: "SAO Alicitization",
+        author: "Reki Kawahara",
+        price: 599,
+        category: "fiction",
+        image: "covers/SAOAlici.jpeg"
+      },
+      {
+        title: "Harry Potter and the Philosopher's Stone",
+        author: "J.K. Rowling",
+        price: 749,
+        category: "fantasy",
+        image: "covers/harryphilosophergryff.jpg"
+      },
+      {
+        title: "Harry Potter and the Chambers of Secrets",
+        author: "J.K. Rowling",
+        price: 699,
+        category: "fantasy",
+        image: "covers/harrychamberslyther.jpg"
+      },
+      {
+        title: "Harry Potter and the Order of the Phoenix",
+        author: "J.K. Rowling",
+        price: 789,
+        category: "fantasy",
+        image: "covers/harrypheonixraven.jpg"
+      },
+      {
+        title: "It Ends with Us",
+        author: "Colleen Hoover",
+        price: 799,
+        category: "romance",
+        image: "covers/itendswihtus.jpg"
+      },
+      {
+        title: "Harry Potter and the Deathly Hallows",
+        author: "J.K. Rowling",
+        price: 789,
+        category: "fantasy",
+        image: "covers/harryhallowsgryffin.jpg"
+      },
+      {
+        title: "The Wind up bird Chronicle",
+        author: "haruki Murakami",
+        price: 749,
+        category: "selfhelp",
+        image: "covers/thewindupbird.png"
+      },
+      {
+        title: "Harry Potter and the goblet of fire",
+        author: "J.K. Rowling",
+        price: 699,
+        category: "fantasy",
+        image: "covers/harrygoblethuffle.jpg"
+      },
+      {
+        title: "harry potter and the half blood prince",
+        author: "J.K. Rowling",
+        price: 599,
+        category: "fiction",
+        image: "covers/harryhalfslytherin.jpg"
+      },
+      {
+        title: "harry potter and the prisoner of azkaban",
+        author: "J.K. Rowling",
+        price: 749,
+        category: "fantasy",
+        image: "covers/harryprisonerhufflepu.jpg"
+      }
+    ];
 
     function addToCartByTitle(title) {
       // Find the book in allBooks by title
@@ -76,26 +187,20 @@
       });
     }
 
-    let allBooks = [];
-    fetchBooks().then(books => {
-      allBooks = books;
-      renderBooks(allBooks);
-      // Attach category filter after books are rendered
-      document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const category = this.getAttribute('data-category');
-          document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('bg-indigo-200', 'font-bold'));
-          this.classList.add('bg-indigo-200', 'font-bold');
-          if (category === 'all') {
-            renderBooks(allBooks);
-          } else {
-            renderBooks(allBooks.filter(book => book.category === category));
-          }
-        });
+    renderBooks(allBooks);
+    // Attach category filter after books are rendered
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('bg-indigo-200', 'font-bold'));
+        this.classList.add('bg-indigo-200', 'font-bold');
+        if (category === 'all') {
+          renderBooks(allBooks);
+        } else {
+          renderBooks(allBooks.filter(book => book.category === category));
+        }
       });
     });
-
-    window.addToCart = addToCart;
 
   </script>
 
